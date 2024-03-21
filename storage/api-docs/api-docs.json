@@ -1,0 +1,105 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Currency Rates API",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/v1/rates": {
+            "get": {
+                "summary": "Get the rates",
+                "operationId": "cc770e591f50ca5b52e44a4c2275df78",
+                "parameters": [
+                    {
+                        "name": "currency",
+                        "in": "query",
+                        "description": "Currency",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "BTC"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/convert": {
+            "post": {
+                "summary": "Get currency rates for a specified period",
+                "operationId": "8be092a33cf0bbd53654b55a29e034bb",
+                "parameters": [
+                    {
+                        "name": "currency_from",
+                        "in": "query",
+                        "description": "Currency from",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "BTC"
+                        }
+                    },
+                    {
+                        "name": "currency_to",
+                        "in": "query",
+                        "description": "Currency to",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "USD"
+                        }
+                    },
+                    {
+                        "name": "value",
+                        "in": "query",
+                        "description": "Value",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "USD"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearer_token": {
+                "type": "apiKey",
+                "description": "Authorization token (Bearer token)",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    },
+    "security": [
+        {
+            "bearer_token": []
+        }
+    ]
+}
